@@ -1,0 +1,51 @@
+# Initialize an empty to-do list
+to_do_list = []
+
+def display_to_do_list():
+    if not to_do_list:
+        print("Your to-do list is empty.")
+    else:
+        print("To-Do List:")
+        for index, item in enumerate(to_do_list, start=1):
+            print(f"{index}. {item}")
+
+def add_task(task):
+    to_do_list.append(task)
+    print(f"Task '{task}' added to the to-do list.")
+
+def remove_task(index):
+    if 1 <= index <= len(to_do_list):
+        removed_task = to_do_list.pop(index - 1)
+        print(f"Task '{removed_task}' removed from the to-do list.")
+    else:
+        print("Invalid task index. Please provide a valid task index.")
+
+def main():
+    print("Welcome to the To-Do List Manager!")
+
+    while True:
+        print("\nOptions:")
+        print("1. Display To-Do List")
+        print("2. Add Task")
+        print("3. Remove Task")
+        print("4. Quit")
+
+        choice = input("Enter the number of your choice: ")
+        
+        if choice == "1":
+            display_to_do_list()
+        elif choice == "2":
+            task = input("Enter the task to add: ")
+            add_task(task)
+        elif choice == "3":
+            display_to_do_list()
+            index = int(input("Enter the index of the task to remove: "))
+            remove_task(index)
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please choose a valid option.")
+
+if __name__ == "__main__":
+    main()
